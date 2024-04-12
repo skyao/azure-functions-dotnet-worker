@@ -25,6 +25,11 @@ namespace Microsoft.Azure.Functions.Worker
         public abstract string FunctionId { get; }
 
         /// <summary>
+        /// Gets the version of function instance.
+        /// </summary>
+        public abstract string FunctionInstanceVersion { get; }
+
+        /// <summary>
         /// Gets the distributed tracing context.
         /// </summary>
         public abstract TraceContext TraceContext { get; }

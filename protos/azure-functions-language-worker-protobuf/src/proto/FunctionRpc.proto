@@ -394,6 +394,10 @@ message InvocationRequest {
 
   // Current retry context
   RetryContext retry_context = 6;
+
+  // version of Function instance, used by Durable Functions
+  // TBD: try to find a good name for this filed
+  string instance_version = 7;
 }
 
 // Host sends ActivityId, traceStateString and Tags from host

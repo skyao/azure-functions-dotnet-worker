@@ -9,8 +9,10 @@
     <RootNamespace>Microsoft.Azure.Functions.Worker</RootNamespace>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <MinorProductVersion>21</MinorProductVersion>
-    <PatchProductVersion>0</PatchProductVersion>
+    <PatchProductVersion>1</PatchProductVersion>
     <VersionSuffix></VersionSuffix>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <DebugType>embedded</DebugType>
   </PropertyGroup>
 
   <Import Project="..\..\build\Common.props" />

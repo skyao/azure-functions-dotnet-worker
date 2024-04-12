@@ -9,9 +9,10 @@
     <RootNamespace>Microsoft.Azure.Functions.Worker.Grpc</RootNamespace>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <MinorProductVersion>16</MinorProductVersion>
-    <PatchProductVersion>0</PatchProductVersion>
-    <VersionSuffix></VersionSuffix>
+    <PatchProductVersion>1</PatchProductVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <DebugType>embedded</DebugType>
   </PropertyGroup>
 
   <Import Project="..\..\build\Common.props" />

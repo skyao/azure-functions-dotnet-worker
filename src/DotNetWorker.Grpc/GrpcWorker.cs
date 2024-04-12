@@ -54,7 +54,18 @@ namespace Microsoft.Azure.Functions.Worker
 
         public Task StartAsync(CancellationToken token)
         {
+
+            // Console.WriteLine(new System.Diagnostics.StackTrace(true));
+
+            // Console.WriteLine("********versionging********: Running GrpcWorker.StartAsync()");
+            // Console.WriteLine("********sleep 20 seconds to warit for debug to attach this process ********");
+            // System.Threading.Thread.Sleep(20 * 1000);
+            // Console.WriteLine("********completed sleep 20 seconds, continue to run GrpcWorker.StartAsync() ********");
+
             _workerClient = _workerClientFactory.CreateClient(this);
+
+            // Console.WriteLine("_workerClient is " + _workerClient.GetType().Name);
+
             return _workerClient.StartAsync(token);
         }
 
@@ -78,11 +89,22 @@ namespace Microsoft.Azure.Functions.Worker
             switch (request.ContentCase)
             {
                 case MsgType.InvocationRequest:
+                    string instanceVersion = request.InvocationRequest.InstanceVersion;
+                    Console.WriteLine("GrpcWorker received InvocationRequest, instanceVersion = " + instanceVersion);
+                    // if version is empty, hard code it to "9.9.9" for testing
+                    if (string.IsNullOrEmpty(instanceVersion))
+                    {
+                        Console.WriteLine("version is empty, hard code it to 9.9.9 for testing");
+                        request.InvocationRequest.InstanceVersion = "9.9.9";
+                    }
+                    
                     responseMessage.InvocationResponse = await InvocationRequestHandlerAsync(request.InvocationRequest);
                     break;
 
                 case MsgType.WorkerInitRequest:
+                    
                     responseMessage.WorkerInitResponse = WorkerInitRequestHandler(request.WorkerInitRequest, _workerOptions);
+                    Console.WriteLine("GrpcWorker received WorkerInitRequest, WorkerVersion in response = " + responseMessage.WorkerInitResponse.WorkerVersion);
                     break;
 
                 case MsgType.WorkerStatusRequest:

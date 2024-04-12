@@ -31,6 +31,8 @@ namespace Microsoft.Azure.Functions.Worker
 
         public override string FunctionId => _invocation.FunctionId;
 
+        public override string FunctionInstanceVersion => _invocation.FunctionInstanceVersion;
+
         public override FunctionDefinition FunctionDefinition { get; }
 
         public override IDictionary<object, object> Items { get; set; } = new Dictionary<object, object>();

@@ -20,6 +20,8 @@ namespace Microsoft.Azure.Functions.Worker.Grpc
 
         public override string FunctionId => _invocationRequest.FunctionId;
 
+        public override string FunctionInstanceVersion => _invocationRequest.InstanceVersion;
+
         public override TraceContext TraceContext { get; }
 
         public RetryContext Context => _retryContext ??= _invocationRequest.RetryContext == null ? null! : new GrpcRetryContext(_invocationRequest.RetryContext);

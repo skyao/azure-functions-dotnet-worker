@@ -29,6 +29,8 @@ namespace Microsoft.Azure.Functions.Worker.Tests
 
         public override string FunctionId { get; } = Guid.NewGuid().ToString();
 
+        public override string FunctionInstanceVersion { get; } = "1.0.0";
+
         public override TraceContext TraceContext { get; }
     }
 }

@@ -95,6 +95,8 @@ namespace Microsoft.Azure.Functions.Worker.Tests
 
         public override string FunctionId => _invocation.FunctionId;
 
+        public override string FunctionInstanceVersion => _invocation.FunctionInstanceVersion;
+
         public override TraceContext TraceContext => _invocation.TraceContext;
 
         public override BindingContext BindingContext { get; }
